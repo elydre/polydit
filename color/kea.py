@@ -51,10 +51,6 @@ def get_colors(ligne): # sourcery no-metrics
         elif car in list("0123456789") and not in_string:
             colors.append([[i, i+1], theme["number"]])
 
-    for mot in ["IF", "END", "LOOP", "RETURN", "FUNC"]:
-        if mot in ligne:
-            colors.append([[ligne.find(mot), ligne.find(mot)+len(mot)], theme["keyword"]])
-            
     if in_comment:
         colors.append([[0, len(ligne)], theme["comment"]])
     
@@ -64,5 +60,8 @@ def get_colors(ligne): # sourcery no-metrics
     if in_var:
         colors.append([[debut_var, len(ligne)], theme["var"]])
 
+    for mot in ["IF", "END", "LOOP", "RETURN", "FUNC"]:
+        if mot in ligne:
+            colors.append([[ligne.find(mot), ligne.find(mot)+len(mot)], theme["keyword"]])
 
     return colors
