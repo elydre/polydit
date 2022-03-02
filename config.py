@@ -13,6 +13,8 @@ curseur_color = "#f3934b"
 
 main_font = ("consolas", 12)
 
+# ms entre chaque actualisation (bouton refresh)
+interval_actu = 500
 
 def get_colors(ligne, extension):
     """
