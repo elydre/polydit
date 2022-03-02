@@ -1,10 +1,11 @@
 import color.ks as ks
+import color.kea as kea
 
 # fichier dans l'explorateur
 files = [
     ('All Files', '*.*'),
     ('KEA stream', '*.ks'),
-    ('KEA', '*.KEA'),
+    ('KEA', '*.kea'),
     ('Text', '*.txt'),
 ]
 
@@ -24,7 +25,8 @@ def get_colors(ligne, extension):
     """
 
     mod4color = {
-        "ks": ks.get_colors
+        "ks": ks.get_colors,
+        "kea": kea.get_colors,
     }
 
     return mod4color[extension](ligne) if extension in mod4color else False

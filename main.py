@@ -27,22 +27,19 @@ def push():
 def save_file():
     global chemin
     fichier = asksaveasfile(filetypes = files, defaultextension = files)
-    chemin = fichier.name
     if fichier is not None:
+        chemin = fichier.name
         fichier.write(ZCODE.get("1.0", tk.END))
         fichier.close()
-        LB_NAME.configure(text=f" •  {chemin}")
 
 def open_file():
     global chemin
-    chemin = filedialog.askopenfilename(filetypes = files, defaultextension = files)
-    fichier = open(chemin, "r")
-
-    if fichier is not None:
-        ZCODE.delete("1.0", tk.END)
-        ZCODE.insert(tk.END, fichier.read())
-        fichier.close()
-        LB_NAME.configure(text=f" •  {chemin}")
+    temp = filedialog.askopenfilename(filetypes = files, defaultextension = files)
+    if temp != "":
+        chemin = temp
+        with open(chemin, "r") as fichier:
+            ZCODE.delete("1.0", tk.END)
+            ZCODE.insert("1.0", fichier.read())
 
 def setup_editor():
     global ZCODE, BT_LOAD, BT_SAVE, BT_PUSH, LB_NAME, chemin, files, list_tag
