@@ -1,2 +1,7 @@
-# polydit
-éditeur de code ultra personnalisable
+# POLYDIT
+
+### 🔰 • codé pour coder
+### 💯 • open source
+### 🐍 • 100% python
+### 🐧 • multi-platform
+### 💾 • portable
