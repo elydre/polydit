@@ -15,9 +15,8 @@ fenetre.configure(background="#000000")
 
 get_dimensions = lambda: [fenetre.winfo_width(), fenetre.winfo_height()]
 
-def push():
+def push(event=None):
     global chemin
-    print(chemin)
     if chemin == "...":
         return save_file()
     BT_PUSH.configure(background="#006600")
@@ -76,6 +75,7 @@ def setup_editor():
     BT_REFR = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="REFRESH", command=bool_refr)
     LB_NAME =  tk.Label(fenetre, bg="#12172B", fg="#FFFFFF", text="", anchor="w", font=config.main_font)
     fenetre.bind('<Control-MouseWheel>', lambda event: ZCODE.configure(font=(ZCODE.cget("font").split(" ")[0], int(ZCODE.cget("font").split(" ")[1]) + int(event.delta/100))))
+    fenetre.bind('<Control-KeyPress-s>', push)
     place_editor()
 
 def kill_editor():
