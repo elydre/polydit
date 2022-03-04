@@ -20,8 +20,11 @@ def push():
     print(chemin)
     if chemin == "...":
         return save_file()
+    BT_PUSH.configure(background="#006600")
+    BT_PUSH.update()
     with open(chemin, "w") as fichier:
         fichier.write(ZCODE.get("1.0", tk.END))
+    fenetre.after(1000, lambda: BT_PUSH.configure(background="#12172B"))
 
 def save_file():
     global chemin
