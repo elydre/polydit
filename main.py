@@ -23,7 +23,7 @@ def push(event=None):
     BT_PUSH.update()
     with open(chemin, "w") as fichier:
         fichier.write(ZCODE.get("1.0", tk.END))
-    fenetre.after(1000, lambda: BT_PUSH.configure(background="#12172B"))
+    fenetre.after(500, lambda: BT_PUSH.configure(background="#12172B"))
 
 def save_file():
     global chemin
@@ -69,10 +69,10 @@ def setup_editor():
     files = config.files
     ZCODE = tk.Text(fenetre, bg="#0C0F1D", fg="#FFFFFF", insertbackground=config.curseur_color, font=config.main_font)
 
-    BT_SAVE = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="SAVE AS", command=save_file)
-    BT_PUSH = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="SAVE",    command=push)
-    BT_LOAD = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="LOAD",    command=open_file)
-    BT_REFR = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="REFRESH", command=bool_refr)
+    BT_SAVE = tk.Button(fenetre, bg="#12172B", activebackground="#12172B", fg="#FFFFFF", text="SAVE AS", command=save_file)
+    BT_PUSH = tk.Button(fenetre, bg="#12172B", activebackground="#12172B", fg="#FFFFFF", text="SAVE",    command=push)
+    BT_LOAD = tk.Button(fenetre, bg="#12172B", activebackground="#12172B", fg="#FFFFFF", text="LOAD",    command=open_file)
+    BT_REFR = tk.Button(fenetre, bg="#12172B", activebackground="#12172B", fg="#FFFFFF", text="REFRESH", command=bool_refr)
     LB_NAME =  tk.Label(fenetre, bg="#12172B", fg="#FFFFFF", text="", anchor="w", font=config.main_font)
     fenetre.bind('<Control-MouseWheel>', lambda event: ZCODE.configure(font=(ZCODE.cget("font").split(" ")[0], int(ZCODE.cget("font").split(" ")[1]) + int(event.delta/100))))
     fenetre.bind('<Control-KeyPress-s>', push)
