@@ -57,8 +57,7 @@ def bool_refr():
         else:
             BT_REFR.configure(background="#12172B")
     else:
-        print("Pas de fichier chargé")
-
+        print("Pas de fichier chargé") 
 
 def setup_editor():
     global ZCODE, BT_LOAD, BT_SAVE, BT_PUSH, BT_REFR, LB_NAME, chemin, files, list_tag, do_actu
@@ -73,6 +72,7 @@ def setup_editor():
     BT_LOAD = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="LOAD",    command=open_file)
     BT_REFR = tk.Button(fenetre, bg="#12172B", fg="#FFFFFF", text="REFRESH", command=bool_refr)
     LB_NAME =  tk.Label(fenetre, bg="#12172B", fg="#FFFFFF", text="", anchor="w", font=config.main_font)
+    fenetre.bind('<Control-MouseWheel>', lambda event: ZCODE.configure(font=(ZCODE.cget("font").split(" ")[0], int(ZCODE.cget("font").split(" ")[1]) + int(event.delta/100))))
     place_editor()
 
 def kill_editor():
@@ -122,6 +122,7 @@ def actu():
         LB_NAME.configure(text=f" •  {chemin}  •  pas de module")
 
     fenetre.after(250, actu)
+
 setup_editor()
 actu()
 
