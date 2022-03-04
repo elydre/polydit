@@ -105,6 +105,7 @@ def actu():
 
     for tag in list_tag:
         ZCODE.tag_delete(tag)
+        list_tag.remove(tag)
 
     if config.get_colors("", chemin.split(".")[-1]) is not False:
         LB_NAME.configure(text=f" •  {chemin}  •  {chemin.split('.')[-1]}")
@@ -114,7 +115,8 @@ def actu():
             if liste_color is not None:
                 for e in liste_color:
                     ZCODE.tag_add(e[1], f"{l+1}.{e[0][0]}", f"{l+1}.{e[0][1]}")
-                    list_tag.append(e[1])
+                    if e[1] not in list_tag:
+                        list_tag.append(e[1])
                     ZCODE.tag_configure(e[1], foreground=e[1])
     else:
         LB_NAME.configure(text=f" •  {chemin}  •  pas de module")
